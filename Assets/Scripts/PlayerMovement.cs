@@ -15,11 +15,13 @@ public class PlayerMovement : MonoBehaviour
 
 	public float TurnSpeed = 90f;
 	private Vector2 SteerInput, screenCenter, mouseDistance;
+	private float SteerY;
+	private float SteerX;
+	private float mouseSide;
 
 	private void Start()
 	{
-		screenCenter.x = Screen.width * 0.5f;
-		screenCenter.y = Screen.height * 0.5f;
+		centerScreen();
 	}
 	// Update is called once per frame
 	void Update()
@@ -48,7 +50,12 @@ public class PlayerMovement : MonoBehaviour
 
 		mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f);
 
-		transform.Rotate(-mouseDistance.y * TurnSpeed * Time.deltaTime, mouseDistance.x * TurnSpeed * Time.deltaTime, 0f, Space.Self);
+		SteerX = mouseDistance.x * TurnSpeed * Time.deltaTime;
+		SteerY = -mouseDistance.y * TurnSpeed * Time.deltaTime;
+
+		transform.Rotate(SteerY,SteerX, 0f, Space.Self);
+		
+
 	}
 
 	private void Accelerate()
@@ -58,8 +65,25 @@ public class PlayerMovement : MonoBehaviour
 		transform.position += transform.forward * activeMomentum * Time.deltaTime;
 	}
 
-	private void centerMouse()
+	private void centerScreen()
 	{
+		screenCenter.x = Screen.width * 0.5f;
+		screenCenter.y = Screen.height * 0.5f;
+	}
 
+	private void steerTurn()
+	{
+		SteerInput.x = Input.mousePosition.x;
+
+		mouseSide = SteerInput.x - screenCenter.x;
+
+		if(mouseSide < screenCenter.x)
+		{
+			transform.Rotate(0f, 0f, -0.00005f);
+		}
+		else if(mouseSide > screenCenter.x)
+		{
+			transform.Rotate(0f, 0f, 0.00005f);
+		}
 	}
 }
