@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class HitboxScript : MonoBehaviour
 {
-	bool inHitbox;
+	bool inMap;
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "MapHitbox")
 		{
-			inHitbox = true;
+			inMap = true;
 			print("enter");
 		}
 		
@@ -25,7 +25,7 @@ public class HitboxScript : MonoBehaviour
 	{
 		if (other.gameObject.tag == "MapHitbox")
 		{
-			inHitbox = false;
+			inMap = false;
 			print("exit");
 		}
 	}

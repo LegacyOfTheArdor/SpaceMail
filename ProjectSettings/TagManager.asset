@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MapHitbox
+  - DeliverTarget
   layers:
   - Default
   - TransparentFX

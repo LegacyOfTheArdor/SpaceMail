@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 	public float turnSpaceship = 0.1f;
 	float turnvelocity;*/
 	
-	public float momentum = 30f;
+	public float momentum = 100f;
 	private float activeMomentum;
 
 	public float TurnSpeed = 90f;
