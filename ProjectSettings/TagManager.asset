@@ -6,6 +6,9 @@ TagManager:
   tags:
   - MapHitbox
   - DeliverTarget
+  - Atmosphere
+  - sun
+  - sunheat
   layers:
   - Default
   - TransparentFX

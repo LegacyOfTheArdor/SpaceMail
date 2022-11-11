@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,17 +20,22 @@ public class PlayerMovement : MonoBehaviour
 	private float SteerX;
 	private float mouseSide;
 
+	public Slider acceleration;
+
+	public PlanetStuff planetStuff;
 	private void Start()
 	{
 		centerScreen();
+		
 	}
 	// Update is called once per frame
 	void Update()
     {
 		steer();
 		Accelerate();
+		acceleration.value = activeMomentum;
 
-    }
+	}
 
 	public int activespeed()
 	{
@@ -63,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
 		activeMomentum = activespeed() * momentum;
 
 		transform.position += transform.forward * activeMomentum * Time.deltaTime;
+
+		
 	}
 
 	private void centerScreen()
@@ -86,4 +94,6 @@ public class PlayerMovement : MonoBehaviour
 			transform.Rotate(0f, 0f, 0.00005f);
 		}
 	}
+
+	
 }

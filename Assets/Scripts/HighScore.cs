@@ -17,15 +17,15 @@ public class HighScore : MonoBehaviour
 	{
 		currentScore();
 	}
-	int newScore()
-	{
-		
-		
-		return playerScore;
-	}
+	
 	 public void currentScore()
 	{
 		score.text = "Score : " + playerScore.ToString();
+	}
+
+	public void calculateHighscorePlace()
+	{
+		
 	}
 
 
